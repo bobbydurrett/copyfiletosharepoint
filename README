@@ -1,6 +1,6 @@
 copyfiletosharepoint is my attempt to build a python script
 that will copy a file from my work Windows laptop up to
-my corporate Sharepoint site on Office 365.
+my corporate SharePoint site on Office 365.
 
 It is based on https://github.com/microsoftgraph/python-sample-console-app
 
@@ -43,7 +43,7 @@ adal
 
 I'm currently using Python 3.6.6 32-bit on Windows 7.
 
-The program has an amusing way of authenticating against Sharepoint.
+The program has an amusing way of authenticating against SharePoint.
 
 Here is how you would upload two files in a row, only authenticating once:
 
@@ -58,7 +58,7 @@ to upload_one_file so you don't have to login each time.
 
 To login it pops up a web browser that asks for a Code on a Device Login page.
 In Windows 7 you just right-click and it pastes in your code. Then click Continue.
-Then choose your Sharepoint account just as you would logging into Sharepoint on the
+Then choose your SharePoint account just as you would logging into SharePoint on the
 web.
 
 After you have done all of these steps the console program starts running. Here
