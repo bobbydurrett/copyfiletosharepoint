@@ -8,12 +8,12 @@ python-sample-console-app is a console app that does several things
 including uploading a file from my windows laptop to OneDrive.
 
 So I hacked out all of the code except the part that uploaded the file
-and I modified it to work with Sharepoint.
+and I modified it to work with SharePoint.
 
 As far as licencing goes I'm fine with releasing this under the MIT license
-just like Microsoft did. Hopefully I filled out the copyright info correctly.
+just as Microsoft did. Hopefully I filled out the copyright info correctly.
 Some of the code is verbatim MS code from python-sample-console-app. But 
-I but a number of hours of work into other code that is all mine. Anyway,
+I put a number of hours of work into other code that is all mine. Anyway,
 feel free to use this any way you please but there is no warranty. Use
 at your own risk. See the file LICENSE.
 
