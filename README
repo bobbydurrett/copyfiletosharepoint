@@ -1,0 +1,87 @@
+copyfiletosharepoint is my attempt to build a python script
+that will copy a file from my work Windows laptop up to
+my corporate Sharepoint site on Office 365.
+
+It is based on https://github.com/microsoftgraph/python-sample-console-app
+
+python-sample-console-app is a console app that does several things
+including uploading a file from my windows laptop to OneDrive.
+
+So I hacked out all of the code except the part that uploaded the file
+and I modified it to work with Sharepoint.
+
+As far as licencing goes I'm fine with releasing this under the MIT license
+just like Microsoft did. Hopefully I filled out the copyright info correctly.
+Some of the code is verbatim MS code from python-sample-console-app. But 
+I but a number of hours of work into other code that is all mine. Anyway,
+feel free to use this any way you please but there is no warranty. Use
+at your own risk. See the file LICENSE.
+
+To get this to work you need to create an application at the site
+
+https://apps.dev.microsoft.com/#/appList
+
+The "Application Id" is the same as CLIENT_ID in config.py.
+
+It needs to be a Native application in the Platforms section.
+
+I gave it the following Delegated Permissions, not all of which
+are necessarily needed:
+
+Files.ReadWrite.All
+People.Read
+Sites.ReadWrite.All
+User.Read
+User.ReadBasic.All
+User.ReadWrite
+
+You probably need the following Python packages from pip:
+
+pyperclip
+requests
+adal
+
+I'm currently using Python 3.6.6 32-bit on Windows 7.
+
+The program has an amusing way of authenticating against Sharepoint.
+
+Here is how you would upload two files in a row, only authenticating once:
+
+session = False
+
+session = upload_one_file(base_path,folder_path,file_name,session)            
+session = upload_one_file(base_path,folder_path,file_name2,session)            
+
+The variable session holds the session information after you login the
+first time. You want to save it in a variable for subsequent calls
+to upload_one_file so you don't have to login each time.
+
+To login it pops up a web browser that asks for a Code on a Device Login page.
+In Windows 7 you just right-click and it pastes in your code. Then click Continue.
+Then choose your Sharepoint account just as you would logging into Sharepoint on the
+web.
+
+After you have done all of these steps the console program starts running. Here
+is what the output looks like uploading file_name and file_name2 using the code listed above.
+
+C:\copyfiletosharepoint>python test.py
+The code BEM6USL6D has been copied to your clipboard, and your web browser is opening https://microsoft.com/devicelogin. Paste the
+ code to sign in.
+<Response [200]> bytes returned: 464
+
+Deleting file
+<Response [404]>
+Uploading file
+bytes 0-292332/292333
+Checking in file
+<Response [204]>
+<Response [200]> bytes returned: 464
+
+Deleting file
+<Response [404]>
+Uploading file
+bytes 0-292332/292333
+Checking in file
+<Response [204]>
+
+Bobby Durrett
